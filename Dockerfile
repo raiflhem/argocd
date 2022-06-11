@@ -14,7 +14,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN curl -Lo /tmp/age.tar.gz https://github.com/FiloSottile/age/releases/download/${AGE_VERSION}/age-${AGE_VERSION}-linux-amd64.tar.gz && \
     tar -xvf /tmp/age.tar.gz && \
-    mv age age/age* /usr/local/bin/ && \
+    mv age/age* /usr/local/bin/ && \
     curl -o /usr/local/bin/sops -L https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux && \
     chmod +x /usr/local/bin/sops && \
     cd /usr/local/bin && \
@@ -25,5 +25,5 @@ RUN curl -Lo /tmp/age.tar.gz https://github.com/FiloSottile/age/releases/downloa
     chmod +x helm helm2
 
 USER argocd
-RUN /usr/local/bin/helm.bin plugin install https://github.com/zendesk/helm-secrets --version ${HELM_SECRETS_VERSION}
+RUN /usr/local/bin/helm.bin plugin install https://github.com/jkroepke/helm-secrets --version ${HELM_SECRETS_VERSION}
 ENV HELM_PLUGINS="/home/argocd/.local/share/helm/plugins/"
