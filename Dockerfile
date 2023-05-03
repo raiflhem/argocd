@@ -24,6 +24,6 @@ RUN curl -Lo /tmp/age.tar.gz https://github.com/FiloSottile/age/releases/downloa
     ln helm helm2 && \
     chmod +x helm helm2
 
-USER argocd
+USER 999
 RUN /usr/local/bin/helm.bin plugin install https://github.com/jkroepke/helm-secrets --version ${HELM_SECRETS_VERSION}
 ENV HELM_PLUGINS="/home/argocd/.local/share/helm/plugins/"
